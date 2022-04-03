@@ -58,7 +58,7 @@ class FileLumberdash extends LumberdashClient {
       _lock.synchronized(() async {
         final date = DateTime.now();
         await _logFile.writeAsString(
-          '${date.toIso8601String()}+${timeZoneOffset(date)} - $data\n',
+          '${date.toIso8601String()}${timeZoneOffset(date)} - $data\n',
           mode: FileMode.writeOnlyAppend,
           flush: true,
         );
@@ -72,6 +72,12 @@ class FileLumberdash extends LumberdashClient {
     final offsetMinutes = dateTime.timeZoneOffset.inMinutes;
     final hours = offsetMinutes ~/ 60;
     final minutes = offsetMinutes % 60;
-    return "$hours:${minutes == 0 ? "00" : minutes}";
+    String offsetSign;
+    if (offsetMinutes >= 0) {
+      offsetSign = "+";
+    } else {
+      offsetSign = "-";
+    }
+    return "$offsetSign$hours:${minutes == 0 ? "00" : minutes}";
   }
 }

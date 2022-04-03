@@ -17,9 +17,9 @@ class FileLumberdash extends LumberdashClient {
   @override
   void logMessage(String message, [Map<String, String>? extras]) {
     if (extras != null) {
-      _log('[MESSAGE] $message, extras: $extras');
+      _log('[M] $message, extras: $extras');
     } else {
-      _log('[MESSAGE] $message');
+      _log('[M] $message');
     }
   }
 
@@ -27,9 +27,9 @@ class FileLumberdash extends LumberdashClient {
   @override
   void logWarning(String message, [Map<String, String>? extras]) {
     if (extras != null) {
-      _log('[WARNING] $message, extras: $extras');
+      _log('[W] $message, extras: $extras');
     } else {
-      _log('[WARNING] $message');
+      _log('[W] $message');
     }
   }
 
@@ -37,9 +37,9 @@ class FileLumberdash extends LumberdashClient {
   @override
   void logFatal(String message, [Map<String, String>? extras]) {
     if (extras != null) {
-      _log('[FATAL] $message, extras: $extras');
+      _log('[F] $message, extras: $extras');
     } else {
-      _log('[FATAL] $message');
+      _log('[F] $message');
     }
   }
 
@@ -47,9 +47,9 @@ class FileLumberdash extends LumberdashClient {
   @override
   Future<void> logError(exception, [dynamic stacktrace]) async {
     if (stacktrace != null) {
-      _log('[ERROR] { exception: $exception, stacktrace: $stacktrace }');
+      _log('[E] { exception: $exception, stacktrace: $stacktrace }');
     } else {
-      _log('[ERROR] { exception: $exception }');
+      _log('[E] { exception: $exception }');
     }
   }
 
